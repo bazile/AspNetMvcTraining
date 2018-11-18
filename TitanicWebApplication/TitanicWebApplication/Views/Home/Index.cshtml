@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        Добро пожаловать в энциклопедию о Титанике.
+    </div>
+    <ul>
+        <li><a href="/Passengers/Index">Список пассажиров</a></li>
+    </ul>
+
+    <form action="/Passengers/Search" method="get">
+        Введите искомую строку: <input type="text" name="search" />
+        <br />
+        <input type="submit" value="Найти"/>
+    </form>
+</body>
+</html>

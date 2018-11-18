@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TitanicPassenger>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width" />
+<title>Index</title>
+</head>
+<body>
+<ol>
+@foreach (TitanicPassenger pax in Model)
+{
+<li><a href="/Passengers/Info?id=@pax.Id">@pax.FullName</a></li>
+}
+</ol>
+</body>
+</html>

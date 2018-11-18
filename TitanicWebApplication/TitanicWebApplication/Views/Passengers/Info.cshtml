@@ -1,0 +1,32 @@
+﻿@model TitanicPassenger
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Info</title>
+</head>
+<body>
+    @*@if (Model == null)
+    {
+        <div>Passenger not found!</div>
+    }
+    else
+    {
+        <div>FamilyName: @Model.FamilyName</div>
+        <div>GivenName: @Model.GivenName</div>
+        <div>Class: @Model.Class</div>
+        <div>JobTitle: @Model.JobTitle</div>
+        <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
+    }*@
+    <div>FamilyName: @Model.FamilyName</div>
+    <div>GivenName: @Model.GivenName</div>
+    <div>Class: @Model.Class</div>
+    <div>JobTitle: @Model.JobTitle</div>
+    <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
+</body>
+</html>

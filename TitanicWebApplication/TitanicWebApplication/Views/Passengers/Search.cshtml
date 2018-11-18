@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TitanicPassenger>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+    @if (!Model.Any())
+    {
+        <div>Nothing was found</div>
+    }
+    else
+    {
+        <ul>
+        @foreach (TitanicPassenger pax in Model)
+        {
+            <li><a href="/Passengers/Info?id=@pax.Id">@pax.FullName</a></li>
+        }
+        </ul>
+    }
+</body>
+</html>
