@@ -1,32 +1,27 @@
 ﻿@model TitanicPassenger
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Info</title>
-</head>
-<body>
-    @*@if (Model == null)
-    {
-        <div>Passenger not found!</div>
-    }
-    else
-    {
-        <div>FamilyName: @Model.FamilyName</div>
-        <div>GivenName: @Model.GivenName</div>
-        <div>Class: @Model.Class</div>
-        <div>JobTitle: @Model.JobTitle</div>
-        <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
-    }*@
+@*@if (Model == null)
+{
+    <div>Passenger not found!</div>
+}
+else
+{
     <div>FamilyName: @Model.FamilyName</div>
     <div>GivenName: @Model.GivenName</div>
     <div>Class: @Model.Class</div>
     <div>JobTitle: @Model.JobTitle</div>
     <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
-</body>
-</html>
+}*@
+
+<div>FamilyName: @Model.FamilyName</div>
+<div>GivenName: @Model.GivenName</div>
+<div>Class: @Model.Class</div>
+<div>JobTitle: @Model.JobTitle</div>
+<div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
+@if (Model.BirthAddress != null)
+{
+    <div>@Model.BirthAddress.Country, @Model.BirthAddress.State, @Model.BirthAddress.City</div>
+}

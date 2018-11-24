@@ -1,0 +1,10 @@
+﻿@model IEnumerable<string>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul>
+    @foreach (string country in Model)
+    {
+        <li><a href="/Passengers/Search/?country=@country">@country</a></li>
+    }
+</ul>
