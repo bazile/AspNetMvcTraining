@@ -7,6 +7,7 @@ namespace TitanicWebApplication
 {
 	public class XmlTitanicRepository : ITitanicRepository
 	{
+		static TitanicPassenger[] _passengers;
 		private string _xmlPath;
 
 		public XmlTitanicRepository(string xmlPath)
@@ -14,7 +15,15 @@ namespace TitanicWebApplication
 			_xmlPath = xmlPath;
 		}
 
-		static TitanicPassenger[] _passengers;
+		public string[] GetCountries()
+		{
+			return GetPassengers()
+				.Select(pax => pax.BirthAddress?.Country)
+				.Distinct()
+				.Where(c => !string.IsNullOrEmpty(c))
+				.OrderBy(c => c)
+				.ToArray();
+		}
 
 		public TitanicPassenger[] GetPassengers()
 		{
