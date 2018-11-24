@@ -5,6 +5,6 @@
 <ul>
     @foreach (string country in Model)
     {
-        <li><a href="/Passengers/Search/?country=@country">@country</a></li>
+        <li><a href="@Url.Action("Search", new { country })">@country</a></li>
     }
 </ul>

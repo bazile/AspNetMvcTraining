@@ -7,8 +7,8 @@
 <body>
     <nav style="margin-bottom:1em">
         <a href="/">Домашняя страница</a>
-        | <a href="/Passengers/Index">Список пассажиров</a>
-        | <a href="/Passengers/Countries">Список стран</a>
+        | <a href="@Url.Action("Index", "Passengers")">Список пассажиров</a>
+        | <a href="@Url.Action("Countries", "Passengers")">Список стран</a>
     </nav>
 
     @* Указание места где необходимо вывести тело (контент) представления *@

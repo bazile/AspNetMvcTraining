@@ -2,9 +2,21 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<a href="/Passengers/Countries">Список стран</a>
+<a href="@Url.Action("Countries")">Список стран</a>
+@Html.ActionLink("Список стран", "Countries")
+
+<br /><br />
+
+<a href="/Home/Index">Дом, милый дом</a>
+<a href="@Url.Action("Index", "Home")">Дом, милый дом</a>
+@Html.ActionLink("Дом, милый дом", "Index", "Home")
+
+
 <ol>
 @foreach (TitanicPassenger pax in Model)
 {
-<li><a href="/Passengers/Info?id=@pax.Id">@pax.FullName</a></li>
+<li><a href="@Url.Action("Info", new { id = pax.Id })">@pax.FullName</a></li>
 }
 </ol>

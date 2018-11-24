@@ -11,7 +11,7 @@ else
     <ul>
     @foreach (TitanicPassenger pax in Model)
     {
-        <li><a href="/Passengers/Info?id=@pax.Id">@pax.FullName</a></li>
+        <li><a href="@Url.Action("Info", new { id = pax.Id })">@pax.FullName</a></li>
     }
     </ul>
 }

@@ -115,7 +115,6 @@
     <Content Include="Views\Passengers\Info.cshtml" />
     <Content Include="Views\Passengers\Search.cshtml" />
     <Content Include="Views\Passengers\Countries.cshtml" />
-    <Content Include="Views\Shared\nav.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

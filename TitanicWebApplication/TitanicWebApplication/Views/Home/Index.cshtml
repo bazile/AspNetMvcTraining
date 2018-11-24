@@ -6,12 +6,8 @@
 <div> 
     Добро пожаловать в энциклопедию о Титанике.
 </div>
-<ul>
-    <li><a href="/Passengers/Index">Список пассажиров</a></li>
-    <li><a href="/Passengers/Countries">Список стран</a></li>
-</ul>
 
-<form action="/Passengers/Search" method="get">
+<form action="@Url.Action("Search", "Passengers")" method="get">
     Введите искомую строку: <input type="text" name="search" />
     <br />
     <input type="submit" value="Найти"/>
