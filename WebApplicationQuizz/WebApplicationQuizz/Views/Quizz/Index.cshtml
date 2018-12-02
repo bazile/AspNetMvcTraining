@@ -11,21 +11,22 @@
 
     <form action="@Url.Action("Results", "Quizz", new { id = Model.Id })" method="post">
         <ol>
-            @foreach (var item in Model.Questions)
+            @foreach (var question in Model.Questions)
             {
-                <li>
-                    @item.QuestionText<br />
-                    @foreach (var answers in item.Answers)
-                    {
-                        <div>
-                         
-                            @Html.RadioButton(item.QuestionText,answers.AnswerText,isChecked: false) @answers.AnswerText<br />
-                        </div>
-                    } <br />
+            <li>
+                @question.QuestionText
+                <a href="@Url.Action("EditQuestion", "QuizzAdmin", new { id = question.Id, quizzId = Model.Id } )">edit</a>
+                @foreach (var answer in question.Answers)
+                {
+                    <div>
+                        @Html.RadioButton(question.QuestionText, answer.AnswerText, isChecked: false) @answer.AnswerText
+                        <a href="@Url.Action("EditAnswer", "QuizzAdmin", new { id = answer.Id, quizzId = Model.Id, questionId = question.Id } )">edit</a>
+                    </div>
+                } <br />
 
 
 
-                </li>
+            </li>
             }
         </ol>
 

@@ -23,6 +23,7 @@ namespace WebApplicationQuizz
 
     public class Quizz
     {
+        [XmlIgnore]
         public int Id { get; set; }
 
         [XmlAttribute("name")]
@@ -42,6 +43,9 @@ namespace WebApplicationQuizz
     }
     public class Question
     {
+        [XmlIgnore]
+        public int Id { get; set; }
+
         [XmlAttribute("text")]
         public string QuestionText { get; set; }
 
@@ -58,22 +62,23 @@ namespace WebApplicationQuizz
     }
     public class Answer
     {
+        [XmlIgnore]
+        public int Id { get; set; }
+
         [XmlAttribute("text")]
         public string AnswerText { get; set; }
 
-        public bool _correct;
+        [XmlIgnore]
+        public bool Correct { get; set; }
+
         [XmlAttribute("correct")]
         public string AnswerCorrect
         {
-            get { return !_correct ? "no" : "yes"; }
-            set { _correct = value == "yes" ? true : false; }
+            get { return !Correct ? "no" : "yes"; }
+            set { Correct = value == "yes" ? true : false; }
         }
 
         [XmlText]
         public string AnswerComment { get; set; }
-  
     }
-
-    
-
 }

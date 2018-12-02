@@ -100,10 +100,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuizzAdminController.cs" />
     <Compile Include="Controllers\QuizzController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EditAnswerModel.cs" />
+    <Compile Include="Models\EditQuestionModel.cs" />
     <Compile Include="Models\EditQuizzModel.cs" />
     <Compile Include="Models\QuizzInfoModel.cs" />
     <Compile Include="myQuizz.cs">
@@ -117,6 +120,7 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Quizz\Edit.cshtml" />
+    <Content Include="Views\QuizzAdmin\EditAnswer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

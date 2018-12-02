@@ -1,0 +1,17 @@
+﻿@model WebApplicationQuizz.Models.EditAnswerModel
+@{
+    ViewBag.Title = "EditAnswer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditAnswer</h2>
+
+<form action="@Url.Action("EditAnswer")" method="post">
+    <div>Текст ответа: <input type="text" name="text" value="@Model.Text" /></div>
+    <div>Правильный ответ: @Html.CheckBox("correct", Model.Correct)</div>
+    <div>Комментарий: <input type="text" name="comment" value="@Model.Comment" /></div>
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="quizzid" value="@Model.QuizzId" />
+    <input type="hidden" name="questionid" value="@Model.QuestionId" />
+    <input type="submit" value="Сохранить" />
+</form>
