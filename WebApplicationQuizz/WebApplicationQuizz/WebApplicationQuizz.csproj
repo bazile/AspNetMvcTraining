@@ -121,6 +121,8 @@
     <Content Include="packages.config" />
     <Content Include="Views\Quizz\Edit.cshtml" />
     <Content Include="Views\QuizzAdmin\EditAnswer.cshtml" />
+    <Content Include="Views\QuizzAdmin\EditQuestion.cshtml" />
+    <Content Include="Views\QuizzAdmin\answer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

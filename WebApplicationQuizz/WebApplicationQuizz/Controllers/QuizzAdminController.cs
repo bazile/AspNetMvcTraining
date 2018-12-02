@@ -13,7 +13,31 @@ namespace WebApplicationQuizz.Controllers
                 .SingleOrDefault(q => q.Id == id);
             if (question == null) return HttpNotFound();
 
-            return View(question);
+            var model = new EditQuestionModel
+            {
+                Id = question.Id,
+                QuizzId = quizzId,
+                Text = question.QuestionText,
+            };
+            model.Answers = new EditAnswerModel[question.Answers.Count];
+            for (int i=0; i<question.Answers.Count; i++)
+            {
+                var answer = question.Answers[i];
+                model.Answers[i] = new EditAnswerModel
+                {
+                    Id = answer.Id,
+                    Text = answer.AnswerText,
+                    Comment = answer.AnswerComment,
+                    Correct = answer.Correct
+                };
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditQuestion(EditQuestionModel model)
+        {
+            return View(model);
         }
 
         public ActionResult EditAnswer(int id, int quizzId, int questionId)
