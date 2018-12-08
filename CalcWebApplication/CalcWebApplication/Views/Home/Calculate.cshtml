@@ -1,0 +1,36 @@
+﻿@model CalcWebApplication.Models.CalcViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @*<form action="@Url.Action("Index")" method="get">
+
+    </form>*@
+
+    @if (Model?.Result != null)
+    {
+        <div>Результат: @Model.Result</div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <input name="a" type="text" value="@(Model == null ? "" : Model.A.ToString())"/>
+        <select name="op">
+            <option value="+" @(Model != null && Model.Op == "+" ? " selected='selected'" : "")>+</option>
+            <option value="-" @(Model != null && Model.Op == "-" ? " selected='selected'" : "")>-</option>
+            <option value="*" @(Model != null && Model.Op == "*" ? " selected='selected'" : "")>*</option>
+            <option value="/" @(Model != null && Model.Op == "/" ? " selected='selected'" : "")>/</option>
+        </select>
+        <input name="b" type="text" value="@(Model == null ? "" : Model.B.ToString())" />
+        <input type="submit" value="Вычислить" />
+    }
+</body>
+</html>

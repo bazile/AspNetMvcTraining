@@ -1,0 +1,36 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @*<form action="@Url.Action("Index")" method="get">
+
+    </form>*@
+
+    @if (Model != null)
+    {
+        <div>Результат: @Model</div>
+    }
+
+    @using (Html.BeginForm("Calculate", "Home", FormMethod.Get))
+    {
+        <input name="a" type="text" />
+        <select name="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input name="b" type="text" />
+        <input type="submit" value="Вычислить" />
+    }
+</body>
+</html>
