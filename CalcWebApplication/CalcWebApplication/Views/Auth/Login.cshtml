@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Auth"))
+    {
+        <div>Login: <input type="text" name="user" value="@Request.Form["user"]"/></div>
+        <div>Password: <input type="password" name="pwd" /></div>
+        <input type="submit" value="Login" />
+    }
+</body>
+</html>
