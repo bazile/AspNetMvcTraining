@@ -1,0 +1,12 @@
+﻿@{
+    var prevCalculations = (List<CalcWebApplication.Models.CalcModel>)Session["prevCalculations"];
+}
+@if (prevCalculations != null)
+{
+    <ul>
+        @foreach (var calcModel in prevCalculations)
+        {
+            <li>@calcModel.A @calcModel.Op @calcModel.B</li>
+        }
+    </ul>
+}

@@ -11,9 +11,7 @@
     <title>Index</title>
 </head>
 <body>
-    @*<form action="@Url.Action("Index")" method="get">
-
-    </form>*@
+    <div>@Html.ActionLink("Настроить", "Configure")</div>
 
     @if (Model != null)
     {
@@ -22,15 +20,17 @@
 
     @using (Html.BeginForm("Calculate", "Home", FormMethod.Get))
     {
-        <input name="a" type="text" />
+        <input name="a" type="text" value="@ViewData["a"]" />
         <select name="op">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
+            <option value="+" @((string)ViewData["op"] == "+" ? " selected='selected'" : "")>+</option>
+            <option value="-" @((string)ViewData["op"] == "-" ? " selected='selected'" : "")>-</option>
+            <option value="*" @((string)ViewData["op"] == "*" ? " selected='selected'" : "")>*</option>
+            <option value="/" @((string)ViewData["op"] == "/" ? " selected='selected'" : "")>/</option>
         </select>
-        <input name="b" type="text" />
+        <input name="b" type="text" value="@ViewData["b"]" />
         <input type="submit" value="Вычислить" />
     }
+
+    @Html.Partial("_history")
 </body>
 </html>

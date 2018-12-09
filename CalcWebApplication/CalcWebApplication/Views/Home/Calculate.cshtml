@@ -32,5 +32,7 @@
         <input name="b" type="text" value="@(Model == null ? "" : Model.B.ToString())" />
         <input type="submit" value="Вычислить" />
     }
+
+    @Html.Partial("_history")
 </body>
 </html>
