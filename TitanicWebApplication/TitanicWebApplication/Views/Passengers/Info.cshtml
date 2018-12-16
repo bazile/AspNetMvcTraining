@@ -1,4 +1,4 @@
-﻿@model TitanicPassenger
+﻿@model TitanicWebApplication.Db.TitanicDbPassenger
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,7 +21,7 @@ else
 <div>Class: @Model.Class</div>
 <div>JobTitle: @Model.JobTitle</div>
 <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
-@if (Model.BirthAddress != null)
+@*@if (Model.BirthAddress != null)
 {
     <div>@Model.BirthAddress.Country, @Model.BirthAddress.State, @Model.BirthAddress.City</div>
-}
+}*@

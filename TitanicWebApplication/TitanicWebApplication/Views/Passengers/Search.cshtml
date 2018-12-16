@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TitanicPassenger>
+﻿@model IEnumerable<TitanicWebApplication.Db.TitanicDbPassenger>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,9 +9,9 @@
 else
 {
     <ul>
-    @foreach (TitanicPassenger pax in Model)
+    @foreach (var pax in Model)
     {
-        <li><a href="@Url.Action("Info", new { id = pax.Id })">@pax.FullName</a></li>
+        <li><a href="@Url.Action("Info", new { id = pax.UniqueId })">@pax.FullName</a></li>
     }
     </ul>
 }

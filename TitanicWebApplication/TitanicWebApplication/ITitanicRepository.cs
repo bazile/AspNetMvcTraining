@@ -3,7 +3,7 @@
 	interface ITitanicRepository
 	{
 		string[] GetCountries();
-		TitanicPassenger[] GetPassengers();
+        TitanicPassenger[] GetPassengers();
 		TitanicPassenger[] Find(string query);
 	}
 }

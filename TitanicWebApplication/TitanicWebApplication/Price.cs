@@ -37,7 +37,7 @@ namespace TitanicWebApplication
 			_totalPence = pounds * 240 + shillings * 12 + pence;
 		}
 
-		private Price(int totalPence)
+		public Price(int totalPence)
 		{
 			_totalPence = totalPence;
 		}

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TitanicPassenger>
+﻿@model TitanicWebApplication.Models.PassengersViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,8 +15,8 @@
 
 
 <ol>
-@foreach (TitanicPassenger pax in Model)
+@foreach (var pax in Model.Passengers)
 {
-<li><a href="@Url.Action("Info", new { id = pax.Id })">@pax.FullName</a></li>
+<li><a href="@Url.Action("Info", new { id = pax.UniqueId })">@pax.FullName</a></li>
 }
 </ol>
