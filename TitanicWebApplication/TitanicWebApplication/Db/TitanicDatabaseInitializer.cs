@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Web;
@@ -33,19 +34,12 @@ namespace TitanicWebApplication.Db
                     }
                 }
 
-                var dbPax = new TitanicDbPassenger
-                {
-                    HonorificPrefix = pax.HonorificPrefix,
-                    HonorificSuffix = pax.HonorificSuffix,
-                    FamilyName = pax.FamilyName,
-                    GivenName = pax.GivenName,
+                TitanicDbPassenger dbPax = Mapper.Map<TitanicDbPassenger>(pax);
+                dbPax.Country = country;
+                dbPax.AddressCity = pax.BirthAddress?.City;
+                dbPax.AddressState = pax.BirthAddress?.State;
+                dbPax.PriceTotalPence = pax.TicketPrice.TotalPence;
 
-                    Country = country,
-                    AddressState = pax.BirthAddress?.State,
-                    AddressCity = pax.BirthAddress?.City,
-
-                    UniqueId = pax.Id
-                };
                 context.Passengers.Add(dbPax);
             }
 

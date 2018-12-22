@@ -35,7 +35,7 @@ namespace TitanicWebApplication
             {
                 passengers.Add(new TitanicPassenger
                 {
-                    Id = dbPax.UniqueId,
+                    UniqueId = dbPax.UniqueId,
                     HonorificPrefix = dbPax.HonorificPrefix,
                     HonorificSuffix = dbPax.HonorificSuffix,
                     FamilyName = dbPax.FamilyName,

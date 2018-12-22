@@ -16,11 +16,20 @@ else
     <div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
 }*@
 
-<div>FamilyName: @Model.FamilyName</div>
+@*@Html.DisplayForModel()*@
+@*<div>@Html.EditorFor(m => m.GivenName)</div>
+<div>@Html.EditorFor(m => m.HasSurvived)</div>
+<div>@Html.EditorFor(m => m.BirthDate)</div>*@
+@Html.EditorForModel()
+
+@*<div>FamilyName: @Model.FamilyName</div>
 <div>GivenName: @Model.GivenName</div>
 <div>Class: @Model.Class</div>
 <div>JobTitle: @Model.JobTitle</div>
-<div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>
+<div>@Html.DisplayFor(m => m.TicketPrice)</div>
+<div>Дата рождения: @Html.DisplayFor(m => m.BirthDate)</div>
+<div>Дата смерти: @Html.DisplayFor(m => m.DeathDate)</div>*@
+@*<div>TicketPrice: @Model.TicketPrice (@Model.TicketPrice.ModernEquivalent)</div>*@
 @*@if (Model.BirthAddress != null)
 {
     <div>@Model.BirthAddress.Country, @Model.BirthAddress.State, @Model.BirthAddress.City</div>

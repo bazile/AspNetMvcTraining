@@ -19,7 +19,9 @@ namespace TitanicWebApplication.Db
         public bool IsServant { get; set; }
 
         public int? AgeMonths { get; set; }
+        [Display(Name="Дата рождения")]
         public DateTime? BirthDate { get; set; }
+        [Display(Name="Дата смерти")]
         public DateTime? DeathDate { get; set; }
         public TitanicDbCountry Country { get; set; }
         public string AddressState { get; set; }

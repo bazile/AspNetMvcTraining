@@ -40,7 +40,7 @@ namespace TitanicWebApplication
 		public string Url { get; set; }
 
 		[System.Xml.Serialization.XmlAttribute("id")]
-		public string Id { get; set; }
+		public string UniqueId { get; set; }
 
 		public string FullName
 		{
