@@ -67,27 +67,30 @@ namespace WebApplicationQuizz.Controllers
         //public ActionResult EditAnswer(int id, string text, string comment, bool correct)
         public ActionResult EditAnswer(EditAnswerModel model)
         {
-            //var answer = quizzRepository.GetQuizzes()
-            //    .SelectMany(q => q.Questions)
-            //    .SelectMany(q => q.Answers)
-            //    .SingleOrDefault(a => a.Id == id);
-            var answer = quizzRepository.GetQuizzes()
-                .SingleOrDefault(q => q.Id == model.QuizzId)?.Questions
-                .SingleOrDefault(q => q.Id == model.QuestionId)?.Answers
-                .SingleOrDefault(a => a.Id == model.Id);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                var answer = quizzRepository.GetQuizzes()
+                    .SingleOrDefault(q => q.Id == model.QuizzId)?.Questions
+                    .SingleOrDefault(q => q.Id == model.QuestionId)?.Answers
+                    .SingleOrDefault(a => a.Id == model.Id);
 
-            if (answer == null) return HttpNotFound();
+                if (answer == null) return HttpNotFound();
 
-            answer.AnswerText = model.Text.Trim();
-            answer.AnswerComment = model.Comment?.Trim() ?? "";
-            // TODO Добавить свойство Question
-            //foreach (var ans in answer.Question.Answers)
-            //{
-            //    ans.Correct = false;
-            //}
-            answer.Correct = true;
+                answer.AnswerText = model.Text.Trim();
+                answer.AnswerComment = model.Comment?.Trim() ?? "";
+                // TODO Добавить свойство Question
+                //foreach (var ans in answer.Question.Answers)
+                //{
+                //    ans.Correct = false;
+                //}
+                answer.Correct = true;
 
-            return RedirectToAction("Index", "Quizz", new { id = model.QuizzId });
+                return RedirectToAction("Index", "Quizz", new { id = model.QuizzId });
+            }
         }
     }
 }

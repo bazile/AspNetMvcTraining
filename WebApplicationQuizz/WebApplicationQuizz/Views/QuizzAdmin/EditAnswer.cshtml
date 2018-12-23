@@ -7,6 +7,8 @@
 <h2>EditAnswer</h2>
 
 <form action="@Url.Action("EditAnswer")" method="post">
-    @Html.Partial("answer", Model)
+    @*@Html.Partial("answer", Model)*@
+    @Html.EditorForModel()
+
     <input type="submit" value="Сохранить" />
 </form>

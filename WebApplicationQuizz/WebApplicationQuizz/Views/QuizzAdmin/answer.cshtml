@@ -1,5 +1,9 @@
 ﻿@model WebApplicationQuizz.Models.EditAnswerModel
-<div>Текст ответа: <input type="text" name="text" value="@Model.Text" /></div>
+@*<div>Текст ответа: <input type="text" name="text" value="@Model.Text" /></div>*@
+<div>
+    @Html.EditorFor(m => m.Text)
+    @Html.ValidationMessageFor(m => m.Text)
+</div>
 <div>Правильный ответ: @Html.CheckBox("correct", Model.Correct)</div>
 <div>Комментарий: <input type="text" name="comment" value="@Model.Comment" /></div>
 <input type="hidden" name="id" value="@Model.Id" />
