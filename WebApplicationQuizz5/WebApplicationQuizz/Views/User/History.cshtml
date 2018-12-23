@@ -1,0 +1,23 @@
+﻿@model  IEnumerable<WebApplicationQuizz.Models.HistoryModel>
+   
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model != null)
+{
+<table border="1">
+    @foreach (var r in Model)
+    {
+        <tr>
+            <td>@r.QuizzDate.ToString("dd.MM.yy HH.mm")</td><td>@r.QuizzResult</td><td>@r.QuizzName</td>
+        </tr>
+    }
+ </table>
+
+
+
+
+}

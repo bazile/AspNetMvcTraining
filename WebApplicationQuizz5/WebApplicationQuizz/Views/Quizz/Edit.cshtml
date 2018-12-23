@@ -1,0 +1,19 @@
+﻿@model WebApplicationQuizz.Models.EditQuizzModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Редактирование @Model.OriginalName</h2>
+
+<form action="@Url.Action("Edit", "Quizz", new { id = Model.Id })" method="post">
+    <input type="text" name="name" value="@Model.CurrentName" size="100" />
+    <br /><input type="submit" />
+</form>
+
+
+
+
+
+

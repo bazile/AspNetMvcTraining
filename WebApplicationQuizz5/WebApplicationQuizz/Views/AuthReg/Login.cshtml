@@ -1,0 +1,17 @@
+﻿@model WebApplicationQuizz.Models.RegisterUserModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "AuthReg"))
+{
+    <div>Login:<input type="text" name="user" /></div>
+    <div>Password:<input type="password" name="pass" /></div>
+
+    <input type="submit" value="Login!" />
+}
+
+@if (!String.IsNullOrEmpty(@ViewBag.Err))
+{
+<font color="red">@ViewBag.Err</font>
+}
