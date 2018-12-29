@@ -9,7 +9,7 @@ namespace WebApplicationQuizz.Models
             Display(Name = "Имя пользователя"),
             Required,
             StringLength(30),
-            Remote("CheckUserName", "AuthRegController", HttpMethod = "post", ErrorMessage = "Имя уже используется")
+            Remote("CheckUserName", "AuthReg", HttpMethod = "post", ErrorMessage = "Имя уже используется")
         ]
         public string User { get; set; }
 

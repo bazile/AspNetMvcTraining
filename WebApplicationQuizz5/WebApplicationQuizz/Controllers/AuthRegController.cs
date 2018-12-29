@@ -140,7 +140,8 @@ namespace WebApplicationQuizz.Controllers
             {
                 userExists = context.QuizzUsers.Count(u => u.Login == user) == 1;
             }
-            return Json(userExists, JsonRequestBehavior.DenyGet);
+            // false - ошибка валидации
+            return Json(!userExists, JsonRequestBehavior.DenyGet);
         }
     }
 }
