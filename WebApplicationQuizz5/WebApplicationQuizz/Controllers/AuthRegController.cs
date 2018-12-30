@@ -19,8 +19,7 @@ namespace WebApplicationQuizz.Controllers
             return View();
         }
 
-
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Login(RegisterUserModel model)
         {
             if (!ModelState.IsValid)
@@ -44,7 +43,10 @@ namespace WebApplicationQuizz.Controllers
                     string passHash = HashHelper.CalculatePasswordHash(model.Pass, Convert.FromBase64String(dbUser.PasswordSalt));
                     if (passHash == dbUser.PasswordHash)
                     {
-                        Response.Cookies.Add(new HttpCookie("user", model.User) { Expires = DateTime.Now.AddMonths(6) });
+                        Response.Cookies.Add(new HttpCookie("user", model.User) {
+                            Expires = DateTime.Now.AddMonths(6),
+                            HttpOnly = true
+                        });
                         return RedirectToAction("Index", "Home"); // авторизация и регистрация будут только на основном окне
                     }
                 }
@@ -61,7 +63,7 @@ namespace WebApplicationQuizz.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Registration(RegisterUserModel model)
         {
             if (!ModelState.IsValid)
@@ -120,7 +122,10 @@ namespace WebApplicationQuizz.Controllers
                     }
                 }
 
-                Response.Cookies.Add(new HttpCookie("user", model.User) {Expires = DateTime.Now.AddMonths(6) });
+                Response.Cookies.Add(new HttpCookie("user", model.User) {
+                    Expires = DateTime.Now.AddMonths(6),
+                    HttpOnly = true
+                });
                 return RedirectToAction("Index", "Home"); 
             }
             

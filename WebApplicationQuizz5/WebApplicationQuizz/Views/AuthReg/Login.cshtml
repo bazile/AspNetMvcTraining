@@ -5,6 +5,8 @@
 
 @using (Html.BeginForm("Login", "AuthReg"))
 {
+    @Html.AntiForgeryToken()
+
     <div>Login:<input type="text" name="user" /></div>
     <div>Password:<input type="password" name="pass" /></div>
 
@@ -13,5 +15,5 @@
 
 @if (!String.IsNullOrEmpty(@ViewBag.Err))
 {
-<font color="red">@ViewBag.Err</font>
+    <font color="red">@ViewBag.Err</font>
 }
