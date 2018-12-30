@@ -6,11 +6,20 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @*@if (ViewBag.MetaDescription != null)
-    {
-        <meta name="description" content="@ViewBag.MetaDescription" />
-    }*@
+        {
+            <meta name="description" content="@ViewBag.MetaDescription" />
+        }*@
+    @*<link rel="stylesheet" type="text/css" href="~/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/form.css" />*@
+    @System.Web.Optimization.Styles.Render("~/css/bundle-all")
+    <style type="text/css">
+        h2 {
+            color: red
+        }
+    </style>
 </head>
-<body>
+<body style="">
 
     @RenderBody()
 
