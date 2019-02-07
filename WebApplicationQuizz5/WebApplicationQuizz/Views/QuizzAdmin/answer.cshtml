@@ -1,7 +1,0 @@
-﻿@model WebApplicationQuizz.Models.EditAnswerModel
-<div>Текст ответа: <input type="text" name="text" value="@Model.Text" /></div>
-<div>Правильный ответ: @Html.CheckBox("correct", Model.Correct)</div>
-<div>Комментарий: <input type="text" name="comment" value="@Model.Comment" /></div>
-<input type="hidden" name="id" value="@Model.Id" />
-<input type="hidden" name="quizzid" value="@Model.QuizzId" />
-<input type="hidden" name="questionid" value="@Model.QuestionId" />
