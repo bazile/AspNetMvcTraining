@@ -6,3 +6,5 @@ Release/
 
 *.suo
 *.csproj.user
+
+~*.pptx
