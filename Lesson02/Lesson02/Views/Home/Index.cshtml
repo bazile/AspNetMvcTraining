@@ -1,0 +1,42 @@
+﻿@using System.Globalization
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+	<!--
+		CSS rule
+		name1:value1; name2:value2
+	-->
+	@*<div>Сегодня <span style="font-weight:bold">@DateTime.Now</span></div>*@
+	@*<ol>
+			@foreach (string monthName in CultureInfo.CurrentCulture.DateTimeFormat.MonthNames.Take(12))
+			{
+				if (monthName[0] == 'М')
+				{
+					<li><span style="color:red; font-style:italic">@monthName</span></li>
+				}
+				else
+				{
+					<li>@monthName</li>
+				}
+			}
+		</ol>*@
+	@*@{
+			string text = "<b>Привет!</b>";
+		}
+		@Html.Raw(text)*@
+
+	<ol>
+	@foreach (string monthName in ViewBag.MonthNames)
+	{
+		<li>@monthName</li>
+	}
+	</ol>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@model Fifa.Stat
+@{
+	Layout = null;
+}
+
+@*<!DOCTYPE html>
+	<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>ЧМ @ViewBag.OneWorldCup.Year @ViewBag.OneWorldCup.Hosts[0]</title>
+	</head>
+	<body>
+		<div>@ViewBag.OneWorldCup.Year</div>
+		<div>Принимающая страна @string.Join(", ", ViewBag.OneWorldCup.Hosts)</div>
+
+		<div>@ViewBag.OneWorldCup.Team1</div>
+		<div>@ViewBag.OneWorldCup.Score12</div>
+		<div>@ViewBag.OneWorldCup.Team2</div>
+
+		<div>@ViewBag.OneWorldCup.Team3</div>
+		<div>@ViewBag.OneWorldCup.Score34</div>
+		<div>@ViewBag.OneWorldCup.Team4</div>
+	</body>
+	</html>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+</head>
+<body>
+	<div>@Model.Year</div>
+	<div>Принимающая страна @string.Join(", ", Model.Hosts)</div>
+
+	<div>@Model.Team1</div>
+	<div>@Model.Score12</div>
+	<div>@Model.Team2</div>
+
+	<div>@Model.Team3</div>
+	<div>@Model.Score34</div>
+	<div>@Model.Team4</div>
+</body>
+</html>

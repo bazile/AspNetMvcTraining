@@ -1,0 +1,59 @@
+﻿@model Fifa.Stat[]
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FIFA World Cups</title>
+</head>
+<body>
+	@*<table border="1">
+		<tr>
+			<th>Год</th>
+			<th>Страна(ы)</th>
+			<th>Первое место</th>
+			<th>Счет</th>
+			<th>Второе место</th>
+		</tr>
+		<tr>
+			<td>1930</td>
+			<td>Уругвай</td>
+			<td>Уругвай</td>
+			<td>4:2</td>
+			<td>Аргентина</td>
+		</tr>
+		<tr>
+			<td>1930</td>
+			<td>Уругвай</td>
+			<td>Уругвай</td>
+			<td>4:2</td>
+			<td>Аргентина</td>
+		</tr>
+	</table>*@
+
+	<table border="1">
+		<tr>
+			<th>Год</th>
+			<th>Страна(ы)</th>
+			<th>Первое место</th>
+			<th>Счет</th>
+			<th>Второе место</th>
+		</tr>
+		@*@foreach (Stat stat in ViewBag.AllWorldCups)*@
+		@foreach (Stat stat in Model)
+		{
+			<tr>
+				<td><a href="/Home/InYear/@stat.Year">@stat.Year</a></td>
+				<td>@stat.Hosts[0]</td>
+				<td style="background-color:red; color:white">@stat.Team1</td>
+				<td>@stat.Score12</td>
+				<td>@stat.Team2</td>
+			</tr>
+		}
+	</table>
+</body>
+</html>
