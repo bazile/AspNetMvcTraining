@@ -1,0 +1,13 @@
+﻿@model Fifa.Stat
+@{
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+@*<div><a href="/Home/InYear/@Model.Year">Simple</a> | <strong>Detailed</strong></div>*@
+@*<div><a href="@Url.Action("InYear")">Simple</a> | <strong>Detailed</strong></div>*@
+@Html.Partial("_menu")
+
+<div>@Model.Year</div>
+<div>Принимающая страна @string.Join(", ", Model.Hosts)</div>
+
+<div>@Model.Team1 - @Model.Team2 - @Model.Score12</div>
+<div>@Model.Team3 - @Model.Team4 - @Model.Score34</div>
