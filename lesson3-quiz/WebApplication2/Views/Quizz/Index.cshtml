@@ -1,0 +1,10 @@
+﻿@model  Quizz
+@{
+    Layout = "~/Views/Home/_MyLauyout.cshtml";
+}
+<h1>@Model.Name</h1>
+
+@foreach (var question in Model.Questions)
+{
+    <div>@question.Text</div>
+}
