@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "SayHello";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>SayHello</h2>
+
+@if (Model != null)
+{
+    <div>Здравствуйте, @Model!</div>
+}
+    <form action="@Url.Action("SayHelloHandler")">
+        <input type="text" name="personname" /><br />
+        @*<input type="text" name="someInput" />*@
+
+
+        <input type="submit" value="Отправить форму" />
+    </form>
