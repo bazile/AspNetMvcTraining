@@ -1,0 +1,31 @@
+﻿@model Fifa.Stat
+@{
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+@*@if (Model == null)
+    {
+        <div>Неверное значение года</div>
+    }
+    else
+    {
+        <div><strong>Simple</strong> | <a href="/Home/InYear/@Model.Year?mode=detailed">Detailed</a></div>
+
+        <div>@Model.Year</div>
+        <div>Принимающая страна @string.Join(", ", Model.Hosts)</div>
+
+        <div>@Model.Team1</div>
+        <div>@Model.Score12</div>
+        <div>@Model.Team2</div>
+    }*@
+@*<div><strong>Simple</strong> | <a href="/Home/InYear/@Model.Year?mode=detailed">Detailed</a></div>*@
+@*<div><strong>Simple</strong> | <a href="?mode=detailed">Detailed</a></div>*@
+@*<div><strong>Simple</strong> | <a href="@Url.Action("InYear", new { id = Model.Year, mode = "detailed" })">Detailed</a></div>*@
+@Html.Partial("_menu")
+
+<div>@Model.Year</div>
+<div>Принимающая страна @string.Join(", ", Model.Hosts)</div>
+
+<div>@Model.Team1</div>
+<div>@Model.Score12</div>
+<div>@Model.Team2</div>

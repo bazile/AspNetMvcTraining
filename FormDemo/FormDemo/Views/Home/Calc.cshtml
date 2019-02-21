@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Calc";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Calc</h2>
+
+@if (Model != null)
+{
+    <div>Результат = @Model</div>
+}
+
+<form action="@Url.Action("CalcHandler")">
+    <input type="number" name="num1" value="@Request.QueryString["num1"]"/><br />
+    <select name="op">
+        <option value="+">Сложить</option>
+        <option value="-">Вычесть</option>
+        <option value="*" selected>Умножить</option>
+        <option value="/">Разделить</option>
+    </select><br />
+    <input type="number" name="num2" value="@Request.QueryString["num2"]"/><br />
+    <input type="submit" value="Расчитать" />
+</form>
