@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check2</title>
+</head>
+<body>
+    <h1>@Model.Name</h1>
+    <ol>
+        @foreach (var question in Model.Questions)
+        {
+            <li class="someItem">
+                <h2>@question.Text</h2>
+
+                <p>Варианты ответов:</p>
+                <div>
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[0].Index">
+                    <label for="Answer1" style="@(question.Answers[0].IsCorrect ? "color:red" : "")">@question.Answers[0].Text</label>
+                </div>
+                <div>
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[1].Index">
+                    <label for="Answer2" style="@(question.Answers[1].IsCorrect ? "color:red" : "")">@question.Answers[1].Text</label>
+                </div>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[2].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[2].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[2].Index">
+                    <label for="Answer3" style="@(question.Answers[2].IsCorrect ? "color:red" : "")">@question.Answers[2].Text</label>
+                </div>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[3].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[3].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[3].Index">
+                    <label for="Answer4" style="@(question.Answers[3].IsCorrect ? "color:red" : "")">@question.Answers[3].Text</label>
+                </div>
+                @*@{ i++; }*@
+            </li>
+        }
+    </ol>
+</body>
+</html>

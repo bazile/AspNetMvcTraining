@@ -1,0 +1,64 @@
+﻿@model  Quizz
+@{
+    ////ViewBag.Title = "Вопросы и варианты ответов";
+    Layout = "~/Views/Shared/_MyLauyout.cshtml";
+}
+<link rel="stylesheet" href="styles.css"/>
+@*<style>
+/* class selector */
+.myForm {
+    display: inline;
+    margin: 0;
+}
+/* element selector */
+li {font-weight:bold;}
+/* id selector */
+    #Answer1 {
+        color:red;
+    }
+</style>*@
+
+<h1>@Model.Name</h1>
+    <form class="myForm" method="post" action="@Url.Action("Check2")">
+    <ol>
+        @*@{ int i = 1; }*@
+        @foreach (var question in Model.Questions)
+        {
+            <li class="someItem">
+                <h2>@question.Text</h2>
+
+                <p>Варианты ответов:</p>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[0].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[0].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[0].Index">
+                    <label for="Answer1" style="@(question.Answers[0].IsCorrect ? "color:red" : "")">@question.Answers[0].Text</label>
+                </div>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[1].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[1].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[1].Index">
+                    <label for="Answer2" style="@(question.Answers[1].IsCorrect ? "color:red" : "")">@question.Answers[1].Text</label>
+                </div>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[2].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[2].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[2].Index">
+                    <label for="Answer3" style="@(question.Answers[2].IsCorrect ? "color:red" : "")">@question.Answers[2].Text</label>
+                </div>
+                <div>
+                    @*<input type="radio" name="q@(i)" value="@question.Answers[3].Text">*@
+                    @*<input type="radio" name="q@(i)" value="@(question.Answers[3].IsCorrect ? "yes" : "")">*@
+                    <input type="radio" name="q@(question.Index)" value="@question.Answers[3].Index">
+                    <label for="Answer4" style="@(question.Answers[3].IsCorrect ? "color:red" : "")">@question.Answers[3].Text</label>
+                </div>
+                @*@{ i++; }*@
+            </li>
+        }
+    </ol>
+    <div>
+        <input name="index" type="hidden" value="@Model.Index" />
+        <button type="submit" onclick="">Ответить</button>
+    </div>
+</form>
+

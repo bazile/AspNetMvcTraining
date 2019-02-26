@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FormDemo.Models;
 
 namespace FormDemo.Controllers
 {
@@ -26,22 +27,31 @@ namespace FormDemo.Controllers
             return View("SayHello", (object)personName);
         }
 
+        [HttpGet]
         public ActionResult Calc()
         {
             return View();
         }
 
-        public ActionResult CalcHandler(int num1, string op, int num2)
+        [HttpPost]
+        public ActionResult Calc(InputCalcData data)
         {
-            double result = 0;
-            switch (op)
+            double? result = null;
+            switch (data.Op)
             {
-                case "+": result = num1 + num2; break;
-                case "-": result = num1 - num2; break;
-                case "*": result = num1 * num2; break;
-                case "/": result = (double)num1 / num2; break;
+                case "+": result = data.Num1 + data.Num2; break;
+                case "-": result = data.Num1 - data.Num2; break;
+                case "*": result = data.Num1 * data.Num2; break;
+                case "/": result = (double)data.Num1 / data.Num2; break;
             }
-            return View("Calc", result);
+            CalcData model = null;
+            if (result != null) model = new CalcData
+            {
+                Num1 = data.Num1, Num2 = data.Num2,
+                Op = data.Op,
+                Result = result.Value
+            };
+            return View("Calc", model);
         }
     }
 }

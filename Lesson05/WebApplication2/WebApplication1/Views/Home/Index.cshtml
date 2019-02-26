@@ -1,0 +1,21 @@
+﻿@model  IEnumerable<WebApplication2.Models.Quizz>
+@{
+    Layout = "~/Views/Shared/_MyLauyout.cshtml";
+}
+
+    <table border="1">
+        <tr>
+            <th>Номер теста</th>
+            <th>Название теста</th>
+        </tr>
+        @foreach (var quizz in Model)
+        {
+        <tr>
+            <td>@quizz.Index</td>
+            @*<td><a href="/Home/InQuiz?mode=@quiz.Index">@quiz.Name</a></td>*@
+            @*<td><a href="/Home/InQuiz/@quizz.Index">@quizz.Name</a></td>*@
+            <td><a href="@Url.Action("Index", "Quizz", new { id = quizz.Index} )">@quizz.Name</a></td>
+        </tr>
+        }
+    </table>
+

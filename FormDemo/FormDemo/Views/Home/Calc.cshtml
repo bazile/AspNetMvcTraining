@@ -1,4 +1,4 @@
-﻿
+﻿@model FormDemo.Models.CalcData
 @{
     ViewBag.Title = "Calc";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
@@ -8,17 +8,18 @@
 
 @if (Model != null)
 {
-    <div>Результат = @Model</div>
+    @*<div>Результат = @Model</div>*@
+    <div>@Model.Num1 @Model.Op @Model.Num2 = @Model.Result</div>
 }
 
-<form action="@Url.Action("CalcHandler")">
-    <input type="number" name="num1" value="@Request.QueryString["num1"]"/><br />
+<form action="@Url.Action("Calc")" method="post">
+    <input type="number" name="num1" value="@(Model?.Num1)" /><br />
     <select name="op">
-        <option value="+">Сложить</option>
-        <option value="-">Вычесть</option>
-        <option value="*" selected>Умножить</option>
-        <option value="/">Разделить</option>
+        <option value="+" @(Model?.Op == "+" ? "selected" : "")>Сложить</option>
+        <option value="-" @(Model?.Op == "-" ? "selected" : "")>Вычесть</option>
+        <option value="*" @(Model?.Op == "*" ? "selected" : "")>Умножить</option>
+        <option value="/" @(Model?.Op == "/" ? "selected" : "")>Разделить</option>
     </select><br />
-    <input type="number" name="num2" value="@Request.QueryString["num2"]"/><br />
+    <input type="number" name="num2" value="@(Model?.Num2)" /><br />
     <input type="submit" value="Расчитать" />
 </form>

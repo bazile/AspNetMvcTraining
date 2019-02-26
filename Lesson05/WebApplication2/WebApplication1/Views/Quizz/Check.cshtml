@@ -1,0 +1,18 @@
+﻿@model WebApplication1.Models.CheckResultModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check</title>
+</head>
+<body>
+    <div>Правильно: @Model.Correct</div>
+    <div>Неправильно: @Model.Incorrect</div>
+</body>
+</html>
