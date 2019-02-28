@@ -16,11 +16,14 @@ namespace WebApplication1.Models
         public string Text { get; set; }
         public bool IsCorrect { get; set; }
         public AnswerResultModel[] Answers { get; set; }
+        public int Index { get; internal set; }
     }
 
     public class AnswerResultModel
     {
         public string Text { get; set; }
         public bool IsCorrect { get; set; }
+        public int Index { get; internal set; }
     }
+
 }

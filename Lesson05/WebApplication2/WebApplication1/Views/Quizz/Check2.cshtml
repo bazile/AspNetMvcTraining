@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication1.Models.QuizzResultModel
 @{
     Layout = null;
 }
@@ -15,32 +15,22 @@
     <ol>
         @foreach (var question in Model.Questions)
         {
-            <li class="someItem">
-                <h2>@question.Text</h2>
-
-                <p>Варианты ответов:</p>
-                <div>
-                    <input type="radio" name="q@(question.Index)" value="@question.Answers[0].Index">
-                    <label for="Answer1" style="@(question.Answers[0].IsCorrect ? "color:red" : "")">@question.Answers[0].Text</label>
-                </div>
-                <div>
-                    <input type="radio" name="q@(question.Index)" value="@question.Answers[1].Index">
-                    <label for="Answer2" style="@(question.Answers[1].IsCorrect ? "color:red" : "")">@question.Answers[1].Text</label>
-                </div>
-                <div>
-                    @*<input type="radio" name="q@(i)" value="@question.Answers[2].Text">*@
-                    @*<input type="radio" name="q@(i)" value="@(question.Answers[2].IsCorrect ? "yes" : "")">*@
-                    <input type="radio" name="q@(question.Index)" value="@question.Answers[2].Index">
-                    <label for="Answer3" style="@(question.Answers[2].IsCorrect ? "color:red" : "")">@question.Answers[2].Text</label>
-                </div>
-                <div>
-                    @*<input type="radio" name="q@(i)" value="@question.Answers[3].Text">*@
-                    @*<input type="radio" name="q@(i)" value="@(question.Answers[3].IsCorrect ? "yes" : "")">*@
-                    <input type="radio" name="q@(question.Index)" value="@question.Answers[3].Index">
-                    <label for="Answer4" style="@(question.Answers[3].IsCorrect ? "color:red" : "")">@question.Answers[3].Text</label>
-                </div>
-                @*@{ i++; }*@
-            </li>
+        <li class="someItem">
+            @if (question.IsCorrect)
+            {
+                <span style="color:green">@question.Text</span>
+            }
+            else
+            {
+                <span style="color:red">@question.Text</span>
+            }
+            @foreach (var answer in question.Answers)
+            {
+                <ul>
+                    <li>@answer.Text</li>
+                </ul>
+            }
+        </li>
         }
     </ol>
 </body>

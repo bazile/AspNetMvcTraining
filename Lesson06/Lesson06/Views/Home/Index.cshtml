@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebAddressModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<a href="@Url.Action("Index", "Cookies")">Проверка работы с cookies</a>
+
+<ul>
+    @foreach (var favorite in Model)
+    {
+        <li>
+            <a href="@favorite.Address">@favorite.Description</a>
+        </li>
+    }
+</ul>
+
+<form action="@Url.Action("Add")" method="post">
+    <div>Адрес: <input name="address" type="text" /></div>
+    <div>Описание: <input name="description" type="text" /></div>
+    <input type="submit" value="Добавить" />
+</form>

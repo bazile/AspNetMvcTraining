@@ -110,6 +110,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CheckResultModel.cs" />
+    <Compile Include="Models\QquizzCheckModel.cs" />
     <Compile Include="Models\QuizzResultModel.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
