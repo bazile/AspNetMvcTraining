@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebApplication1.EF.Skyscraper>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+    @foreach (var sc in Model)
+    {
+        <li>@sc.Name @sc.Height</li>
+    }
+</ul>
