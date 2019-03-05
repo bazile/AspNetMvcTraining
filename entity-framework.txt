@@ -1,0 +1,115 @@
+SELECT * FROM Table
+	context.Table
+
+SELECT Column1, Column2 FROM Table
+	context.Table.Select(t => new { t.Column1, t.Column2 })
+		или
+	from t in context.Table
+	select new { t.Column1, t.Column2 }
+
+SELECT * FROM Table WHERE Column1 = 10
+	context.Table.Where(t => t.Column1 == 10)
+		или
+	from t in context.Table
+	where t.Column1 == 10
+	select t
+
+SELECT * FROM Table WHERE ID IN (1,2,3)
+	???
+	https://social.msdn.microsoft.com/Forums/en-US/095745fe-dcf0-4142-b684-b7e4a1ab59f0/where-in-clause?forum=adodotnetentityframework
+
+SELECT * FROM Table ORDER BY Column1
+	context.OrderBy(t => t.Column1)
+		или
+	from t in context.Table
+	orderby t.Column1
+	select t
+
+SELECT * FROM Table ORDER BY Column1 DESC
+	context.OrderByDescending(t => t.Column1)
+		или
+	from t in context.Table
+	orderby t.Column1 descending
+	select t
+
+SELECT TOP(1) FROM Table
+	First, FirstOrDefault, Single, SingleOrDefault
+
+SELECT TOP(N) FROM Table
+	context.Table.Take(N)
+
+DbFunctions (or EntityFunctions)
+https://msdn.microsoft.com/en-us/library/system.data.entity.dbfunctions(v=vs.113).aspx
+	AddDays
+	AddHours
+	AddHours
+	AddMicroseconds
+	AddMilliseconds
+	AddMinutes
+	AddMonths
+	AddNanoseconds
+	AddSeconds
+	AddYears
+	AsNonUnicode(String)	
+	AsUnicode(String)	
+	CreateDateTime
+	CreateDateTimeOffset
+	CreateTime
+	DiffDays
+	DiffHours
+	DiffMicroseconds
+	DiffMilliseconds
+	DiffMinutes
+	DiffMonths
+	DiffNanoseconds
+	DiffSeconds
+	DiffYears
+	GetTotalOffsetMinutes
+	Left
+	Reverse
+	Right
+	StandardDeviation
+	StandardDeviationP
+	Truncate
+	TruncateTime
+	Var
+	VarP
+
+https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/ef/language-reference/clr-method-to-canonical-function-mapping
+
+	String.Concat(String str0, String str1) 	Concat(str0, str1)
+	String.Concat(String str0, String str1, String str2) 	Concat(Concat(str0, str1), str2)
+	String.Concat(String str0, String str1, String str2, String str03) 	Concat(Concat(Concat(str0, str1), str2), str3)
+	String.Equals(String a, String b) 	= operator
+	String.IsNullOrEmpty(String value) 	(IsNull(value)) OR Length(value) = 0
+	String.op_Equality(String a, String b) 	= operator
+	String.op_Inequality(String a , String b) 	!= operator
+
+Boolean Contains(String value) 	this LIKE '%value%' 	If value is not a constant, then this maps to IndexOf(this, value) > 0
+Boolean EndsWith(String value) 	this LIKE '%value' 	If value is not a constant, then this maps to Right(this, length(value)) = value.
+Boolean StartsWith(String value) 	this LIKE 'value%' 	If value is not a constant, then this maps to IndexOf(this, value) = 1.
+Length 	Length(this) 	
+Int32 IndexOf(String value) 	IndexOf(this, value) - 1 	
+System.String Insert(Int32 startIndex, String value) 	Concat(Concat(Substring(this, 1, startIndex), value), Substring(this, startIndex+1, Length(this) - startIndex)) 	
+System.String Remove(Int32 startIndex) 	Substring(this, 1, startIndex) 	
+System.String Remove(Int32 startIndex, Int32 count) 	Concat(Substring(this, 1, startIndex) , Substring(this, startIndex + count +1, Length(this) - (startIndex + count))) 	Remove(startIndex, count) is only supported if count is an integer greater than or equal to 0.
+ystem.String Replace(String oldValue, String newValue) 	Replace(this, oldValue, newValue) 	
+System.String Substring(Int32 startIndex) 	Substring(this, startIndex +1, Length(this) - startIndex) 	
+System.String Substring(Int32 startIndex, Int32 length) 	Substring(this, startIndex +1, length) 	
+System.String ToLower() 	ToLower(this) 	
+System.String ToUpper() 	ToUpper(this) 	
+System.String Trim() 	Trim(this) 	
+System.String TrimEnd(Char[] trimChars) 	RTrim(this) 	
+System.String TrimStart(Char[]trimChars) 	LTrim(this) 	
+Boolean Equals(String value) 	= operator
+
+
+Conventions
+	TableName: EntityName+'s'
+	PK: Id, <ClassName>Id
+	FK: from navigation prop, use NavPropId property
+	Relations:
+		one-to-many: prop <-> IList<Type>
+		one-to-one: prop
+	Null: nullable value type or reference type
+	NotNull: value type or Required attribute
