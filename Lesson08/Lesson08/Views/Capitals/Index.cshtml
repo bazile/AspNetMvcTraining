@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CountryCapital>
+@{
+    ViewBag.Title = "Capitals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Capitals</h2>
+@foreach (var capital in Model)
+{
+    @*<div>@capital.PartOfWorld, @capital.Country, @capital.CapitalCity [@Html.ActionLink("edit", "Edit", new { id = capital.Id } )]</div>*@
+    <div>@capital.PartOfWorld, @capital.Country, @capital.CapitalCity [@Html.ActionLink("edit2", "Edit2", new { id = capital.Id })]</div>
+}

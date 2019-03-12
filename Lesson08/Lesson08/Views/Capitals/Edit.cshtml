@@ -1,0 +1,23 @@
+﻿@model Lesson08.EF.CountryCapital
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form action="@Url.Action("Edit", new { id = Model.Id })" method="post">
+    @*<div><input type="text" name="partOfWorld" value="@Model.PartOfWorld" maxlength="20" size="21" /></div>
+        <div><input type="text" name="country" value="@Model.Country" maxlength="30" size="31" /></div>
+        <div><input type="text" name="capitalCity" value="@Model.CapitalCity" maxlength="40" size="41" /></div>*@
+
+    @*<div>@Html.LabelFor(m => m.PartOfWorld) @Html.EditorFor(m => m.PartOfWorld)</div>
+    <div>@Html.LabelFor(m => m.Country) @Html.EditorFor(m => m.Country)</div>
+    <div>@Html.LabelFor(m => m.CapitalCity) @Html.EditorFor(m => m.CapitalCity)</div>*@
+
+    @Html.EditorForModel()
+
+    <div><input type="submit" value="Сохранить" /></div>
+    @*<input type="hidden" name="id" value="@Model.Id" />*@
+</form>
