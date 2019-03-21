@@ -1,4 +1,5 @@
 ﻿using AuthDemo.EF;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -36,18 +37,12 @@ namespace AuthDemo.Controllers
             bool authenticated = false;
             if (!string.IsNullOrWhiteSpace(login) && !string.IsNullOrWhiteSpace(password))
             {
-                //authenticated = context.Users.SingleOrDefault(u => u.Login == login && u.Password == password) != null;
-                User user = db.Users.SingleOrDefault(u => u.Login == login);
-                if (user != null)
-                {
-                    authenticated = PBKDF2HashHelper.VerifyPassword(password, user.PasswordHash);
-                }
+                UserManager<SkyscrapersUser> userManager = db.CreateUserManager();
+                authenticated = userManager.Find(login, password) != null;
             }
 
             if (authenticated)
             {
-                //Response.Cookies.Add(new HttpCookie("user", login) { Expires = DateTime.Now.AddDays(300) });
-                //FormsAuthentication.SetAuthCookie(login, true);
                 SetAuthCookie(login);
                 return RedirectToAction("Index");
             }

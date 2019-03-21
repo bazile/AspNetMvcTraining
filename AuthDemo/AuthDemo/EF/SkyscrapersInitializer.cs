@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 using System.Globalization;
 using System.IO;
 using System.Web.Hosting;
@@ -26,12 +28,10 @@ namespace AuthDemo.EF
                 context.Skyscrapers.Add(sc);
             }
 
-            byte[] salt = UserHelper.GenerateSalt();
-            context.Users.Add(new User
-            {
-                Login = "admin",
-                PasswordHash = PBKDF2HashHelper.CreatePasswordHash("qwerty", 3000),
-            });
+            var userManager = context.CreateUserManager();
+            userManager.Create(new SkyscrapersUser { UserName = "admin" }, "qwerty");
+            var user = new SkyscrapersUser { UserName = "vasya" };
+            user.Claims.Add(new IdentityUserClaim { ClaimType = "timezone", ClaimValue = "+5" });
 
             base.Seed(context);
         }
