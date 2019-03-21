@@ -30,8 +30,7 @@ namespace AuthDemo.EF
             context.Users.Add(new User
             {
                 Login = "admin",
-                PasswordHash = UserHelper.GetPasswordHash("qwerty", salt),
-                Salt = UserHelper.ToHexString(salt)
+                PasswordHash = PBKDF2HashHelper.CreatePasswordHash("qwerty", 3000),
             });
 
             base.Seed(context);

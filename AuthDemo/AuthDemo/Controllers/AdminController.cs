@@ -10,10 +10,12 @@ using System.Web.Security;
 
 namespace AuthDemo.Controllers
 {
+    [Authorize(Roles = "Admins")]
     public class AdminController : Controller
     {
         private SkyscrapersContext db = new SkyscrapersContext();
 
+        [AllowAnonymous]
         // GET: Admin
         public ActionResult Index()
         {
@@ -26,7 +28,8 @@ namespace AuthDemo.Controllers
                 return View(db.Skyscrapers);
             }
         }
-        
+
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Index(string login, string password)
         {
@@ -37,22 +40,40 @@ namespace AuthDemo.Controllers
                 User user = db.Users.SingleOrDefault(u => u.Login == login);
                 if (user != null)
                 {
-                    byte[] salt = UserHelper.FromHexString(user.Salt);
-                    string currentHash = UserHelper.GetPasswordHash(password, salt);
-                    authenticated = user.PasswordHash == currentHash;
+                    authenticated = PBKDF2HashHelper.VerifyPassword(password, user.PasswordHash);
                 }
             }
 
             if (authenticated)
             {
                 //Response.Cookies.Add(new HttpCookie("user", login) { Expires = DateTime.Now.AddDays(300) });
-                FormsAuthentication.SetAuthCookie(login, true);
+                //FormsAuthentication.SetAuthCookie(login, true);
+                SetAuthCookie(login);
                 return RedirectToAction("Index");
             }
             else
                 return View();
         }
 
+        void SetAuthCookie(string login, string role = "Admins")
+        {
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1, // Ticket version
+                    login, // Username associated with ticket
+                    DateTime.Now, // Date/time issued
+                    DateTime.Now.AddDays(100), // Date/time to expire
+                    true, // "true" for a persistent user cookie
+                    role, // User-data, in this case the roles
+                    FormsAuthentication.FormsCookiePath);// Path cookie valid for
+
+            string hash = FormsAuthentication.Encrypt(ticket);
+            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash) { HttpOnly = true };
+            if (ticket.IsPersistent) cookie.Expires = ticket.Expiration;
+
+            Response.Cookies.Add(cookie);
+        }
+
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             //if (null != Request.Cookies["user"])
@@ -65,6 +86,7 @@ namespace AuthDemo.Controllers
 
         // -----
 
+        
         // GET: Skyscrapers/Create
         public ActionResult CreateSkyscraper()
         {

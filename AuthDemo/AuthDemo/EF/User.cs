@@ -9,10 +9,7 @@ namespace AuthDemo.EF
         [Required, MaxLength(30)]
         public string Login { get; set; }
 
-        [Required, MaxLength(40)]
+        [Required, MaxLength(100)]
         public string PasswordHash { get; set; }
-
-        [Required, MaxLength(16)]
-        public string Salt { get; set; }
     }
 }
