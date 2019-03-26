@@ -1,0 +1,27 @@
+﻿@model WallpaperListViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Wallpapers</title>
+</head>
+<body>
+    @foreach (var wallpaper in Model.Wallpapers)
+    {
+        @*<div><a href="@Url.Action("Wallpaper", new { id = wallpaper.Id })">@wallpaper.Name</a></div>*@
+        @*<a href="@Url.Action("Wallpaper", new { id = wallpaper.Id })"><img src="@Url.Action("WallpaperImage", new { id = wallpaper.Id })" width="200" /></a>*@
+        <a href="@Url.Action("Wallpaper", new { id = wallpaper.Id })"><img src="~/WallpaperImage.ashx?id=@wallpaper.Id" width="200" /></a>
+    }
+    @if (Model.Page > 1)
+    {
+        <a href="@Url.Action("Index", new { page = Model.Page-1})">Назад</a>
+    }
+    <a href="@Url.Action("Index", new { page = Model.Page+1})">Вперед</a>
+</body>
+</html>
+
+
+
