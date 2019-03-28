@@ -1,0 +1,9 @@
+﻿ImageResizer
+Изменение размеров изображений
+	https://imageresizing.net/
+	https://www.nuget.org/packages/ImageResizer.WebConfig/
+
+X.PagedList
+Library for easily paging through any IEnumerable/IQueryable in ASP.NET/ASP.NET Core
+        https://nuget.org/packages/X.PagedList
+        https://github.com/dncuug/X.PagedList
