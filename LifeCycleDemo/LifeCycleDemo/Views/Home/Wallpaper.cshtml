@@ -11,7 +11,8 @@
 <body>
     <div>
         @*<img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ImagesBytes)" />*@
-        <img src="@Url.Action("WallpaperImage", new { id = Model.Id })" />
+        @*<img src="@Url.Action("WallpaperImage", new { id = Model.Id })" />*@
+        <img src="/WallpaperImage.axd?id=@Model.Id" />
     </div>
 </body>
 </html>
