@@ -9,8 +9,7 @@ namespace MigrationsDemo.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "MigrationsDemo.EF.BookShopContext";
         }
 

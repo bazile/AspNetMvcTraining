@@ -17,8 +17,8 @@ namespace MigrationsDemo.EF
         [Required, MaxLength(150)]
         public string Publisher { get; set; }
 
-        //[Required, MaxLength(13)]
-        //public string ISBN { get; set; }
+        [Required, MaxLength(13)]
+        public string ISBN { get; set; }
 
         public decimal Price { get; set; }
 
