@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Lesson16.Currencies.ExchangeRate>
+<ol>
+    @foreach (var rate in Model)
+    {
+        <li>@rate.Currency - @rate.Rate</li>
+    }
+</ol>

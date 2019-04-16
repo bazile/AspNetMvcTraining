@@ -1,0 +1,6 @@
+﻿@model PersonViewModel
+<div><b style="color:green">@Html.LabelFor(m => m.Name)</b></div>
+<div><a href="@Url.Action("EditPerson", new { id = Model.Id })">@Model.Name</a></div>
+
+<div><b style="color:green">@Html.LabelFor(m => m.BirthDate)</b></div>
+<div>@Html.DisplayFor(m => m.BirthDate)</div>

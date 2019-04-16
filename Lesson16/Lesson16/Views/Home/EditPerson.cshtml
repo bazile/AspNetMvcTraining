@@ -1,0 +1,11 @@
+﻿@model PersonViewModel
+@{
+    ViewBag.Title = "EditPerson";
+}
+
+<h2>EditPerson</h2>
+
+<form method="post">
+    @Html.EditorForModel()
+    <input type="submit" />
+</form>
