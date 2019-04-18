@@ -8,15 +8,30 @@
 <script type="text/javascript">
 function getRates() {
     // AJAX - Async JS and XML
+
     $.ajax({
-        url: "/Home/GetRatesHtml",
+        method: "post",
+        url: "@Url.Action("GetRatesHtml")",
         success: function (data) {
             $("#rates").html(data);
         }
     });
+
+    @*$.ajax({
+        method: "post",
+        url: "@Url.Action("GetRatesJson")",
+        success: function (data) {
+            //var rates = JSON.parse(data);
+            var rates = $.parseJSON(data);
+            for (var i = 0; i < rates.length; i++) {
+                alert([rates[i].Currency, rates[i].Rate])
+            }
+        }
+    });*@
+
 }
 </script>
-<div id="rates"></div>
+<div id="rates">Здесь будут курсы</div>
 
 <address>
     One Microsoft Way<br />

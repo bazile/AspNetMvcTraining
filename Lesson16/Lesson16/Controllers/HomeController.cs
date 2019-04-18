@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 
 namespace Lesson16.Controllers
@@ -42,11 +43,25 @@ namespace Lesson16.Controllers
             return View();
         }
 
+        [HttpPost]
         public async Task<PartialViewResult> GetRatesHtml()
         {
-            ICurrencyRates rateSource = new CachedCurrencyRates(new NbrbCurrencyRates());
+            
+            //ICurrencyRates rateSource = new CachedCurrencyRates(new NbrbCurrencyRatesXml());
+            ICurrencyRates rateSource = new CachedCurrencyRates(HttpContext.Cache, new NbrbCurrencyRatesJson());
             var rates = await rateSource.GetCurrentRatesAsync();
+
             return PartialView("CurrencyRates", rates);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> GetRatesJson()
+        {
+            //ICurrencyRates rateSource = new CachedCurrencyRates(new NbrbCurrencyRatesXml());
+            ICurrencyRates rateSource = new CachedCurrencyRates(HttpContext.Cache, new NbrbCurrencyRatesJson());
+            var rates = await rateSource.GetCurrentRatesAsync();
+            return Json(rates);
+        }
+
     }
 }
